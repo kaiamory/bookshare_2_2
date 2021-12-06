@@ -8,6 +8,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :recommendations,
+             foreign_key: :body
+
   has_many   :reviews
 
   # Indirect associations

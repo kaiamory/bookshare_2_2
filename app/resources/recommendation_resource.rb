@@ -8,6 +8,10 @@ class RecommendationResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :sender,
+             resource: UserResource,
+             foreign_key: :body
+
   # Indirect associations
 
 end
