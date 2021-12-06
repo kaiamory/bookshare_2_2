@@ -1,0 +1,109 @@
+<% was_validated = review.errors.any? %>
+
+<%= form_with(model: review, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for user_id start -->
+  <div class="form-group">
+    <% user_class = "form-control" %>
+    <% user_was_invalid = review.errors.include?(:user) %>
+
+    <% if was_validated %>
+      <% if user_was_invalid %>
+        <% user_class << " is-invalid" %>
+      <% else %>
+        <% user_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user_id %>
+    <!-- Input for user_id start -->
+    <%= f.number_field :user_id, class: user_class, placeholder: "Enter user" %>
+    <!-- Input for user_id end -->
+    <% if user_was_invalid %>
+      <% review.errors.full_messages_for(:user).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for user_id end -->
+  <!-- Label and input for rating start -->
+  <div class="form-group">
+    <% rating_class = "form-control" %>
+    <% rating_was_invalid = review.errors.include?(:rating) %>
+
+    <% if was_validated %>
+      <% if rating_was_invalid %>
+        <% rating_class << " is-invalid" %>
+      <% else %>
+        <% rating_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :rating %>
+    <!-- Input for rating start -->
+    <%= f.number_field :rating, class: rating_class, placeholder: "Enter rating" %>
+    <!-- Input for rating end -->
+    <% if rating_was_invalid %>
+      <% review.errors.full_messages_for(:rating).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for rating end -->
+  <!-- Label and input for body start -->
+  <div class="form-group">
+    <% body_class = "form-control" %>
+    <% body_was_invalid = review.errors.include?(:body) %>
+
+    <% if was_validated %>
+      <% if body_was_invalid %>
+        <% body_class << " is-invalid" %>
+      <% else %>
+        <% body_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :body %>
+    <!-- Input for body start -->
+    <%= f.text_field :body, class: body_class, placeholder: "Enter body" %>
+    <!-- Input for body end -->
+    <% if body_was_invalid %>
+      <% review.errors.full_messages_for(:body).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for body end -->
+  <!-- Label and input for book_id start -->
+  <div class="form-group">
+    <% book_class = "form-control" %>
+    <% book_was_invalid = review.errors.include?(:book) %>
+
+    <% if was_validated %>
+      <% if book_was_invalid %>
+        <% book_class << " is-invalid" %>
+      <% else %>
+        <% book_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :book_id %>
+    <!-- Input for book_id start -->
+    <%= f.number_field :book_id, class: book_class, placeholder: "Enter book" %>
+    <!-- Input for book_id end -->
+    <% if book_was_invalid %>
+      <% review.errors.full_messages_for(:book).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for book_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
