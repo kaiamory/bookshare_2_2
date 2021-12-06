@@ -19,7 +19,11 @@
 
       <dt>Book</dt>
       <!-- Display book_id start -->
-      <dd><%= author.book_id %></dd>
+      <dd>
+        <% if @author.book.present? %>
+          <%= link_to author.book, author.book %>
+        <% end %>
+      </dd>
       <!-- Display book_id end -->
 
     </dl>

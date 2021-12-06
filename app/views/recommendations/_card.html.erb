@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Body</dt>
       <!-- Display body start -->
-      <dd><%= recommendation.body %></dd>
+      <dd>
+        <% if @recommendation.sender.present? %>
+          <%= link_to recommendation.sender, recommendation.sender %>
+        <% end %>
+      </dd>
       <!-- Display body end -->
 
       <dt>Sender</dt>
       <!-- Display sender_id start -->
-      <dd><%= recommendation.sender_id %></dd>
+      <dd>
+        <% if @recommendation.recipient.present? %>
+          <%= link_to recommendation.recipient, recommendation.recipient %>
+        <% end %>
+      </dd>
       <!-- Display sender_id end -->
 
       <dt>Recipient</dt>
