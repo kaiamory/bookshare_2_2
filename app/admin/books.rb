@@ -1,6 +1,5 @@
 ActiveAdmin.register Book do
-
- permit_params :name, :author, :genre, :page_length, :user_id, :author_id
+  permit_params :name, :author, :genre, :page_length, :user_id, :author_id
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register Book do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

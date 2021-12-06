@@ -17,5 +17,4 @@ class RecommendationResource < ApplicationResource
              foreign_key: :body
 
   # Indirect associations
-
 end

@@ -2,12 +2,12 @@ class Recommendation < ApplicationRecord
   # Direct associations
 
   belongs_to :recipient,
-             :class_name => "User",
-             :foreign_key => "sender_id"
+             class_name: "User",
+             foreign_key: "sender_id"
 
   belongs_to :sender,
-             :class_name => "User",
-             :foreign_key => "body"
+             class_name: "User",
+             foreign_key: "body"
 
   # Indirect associations
 
@@ -18,5 +18,4 @@ class Recommendation < ApplicationRecord
   def to_s
     created_at
   end
-
 end

@@ -1,15 +1,14 @@
 class AuthorsController < ApplicationController
-  before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_action :set_author, only: %i[show edit update destroy]
 
   # GET /authors
   def index
     @q = Author.ransack(params[:q])
-    @authors = @q.result(:distinct => true).includes(:book).page(params[:page]).per(10)
+    @authors = @q.result(distinct: true).includes(:book).page(params[:page]).per(10)
   end
 
   # GET /authors/1
-  def show
-  end
+  def show; end
 
   # GET /authors/new
   def new
@@ -17,17 +16,16 @@ class AuthorsController < ApplicationController
   end
 
   # GET /authors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /authors
   def create
     @author = Author.new(author_params)
 
     if @author.save
-      message = 'Author was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Author was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @author, notice: message
       end
@@ -39,7 +37,7 @@ class AuthorsController < ApplicationController
   # PATCH/PUT /authors/1
   def update
     if @author.update(author_params)
-      redirect_to @author, notice: 'Author was successfully updated.'
+      redirect_to @author, notice: "Author was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,22 @@ class AuthorsController < ApplicationController
   def destroy
     @author.destroy
     message = "Author was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to authors_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_author
-      @author = Author.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def author_params
-      params.require(:author).permit(:name, :image, :book_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_author
+    @author = Author.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def author_params
+    params.require(:author).permit(:name, :image, :book_id)
+  end
 end

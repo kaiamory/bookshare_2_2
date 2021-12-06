@@ -11,5 +11,4 @@ class AuthorResource < ApplicationResource
   belongs_to :book
 
   # Indirect associations
-
 end
