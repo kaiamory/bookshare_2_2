@@ -11,10 +11,7 @@ class BookResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :reviews
-
-  has_many   :author_writers,
-             resource: AuthorResource
+  has_many :reviews
 
   # Indirect associations
 
