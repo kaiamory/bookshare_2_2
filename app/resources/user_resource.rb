@@ -8,6 +8,10 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :book_recommendations,
+             resource: RecommendationResource,
+             foreign_key: :sender_id
+
   has_many   :recommendations,
              foreign_key: :body
 
