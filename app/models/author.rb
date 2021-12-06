@@ -1,6 +1,8 @@
 class Author < ApplicationRecord
   # Direct associations
 
+  belongs_to :book
+
   # Indirect associations
 
   # Validations
