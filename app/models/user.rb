@@ -15,6 +15,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :books,
+             :through => :reviews,
+             :source => :book
+
   # Validations
 
   # Scopes
