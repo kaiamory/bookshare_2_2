@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :book_recommendations,
+             :class_name => "Recommendation",
+             :foreign_key => "sender_id",
+             :dependent => :destroy
+
   has_many   :recommendations,
              :foreign_key => "body",
              :dependent => :destroy
