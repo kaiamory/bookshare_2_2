@@ -8,17 +8,8 @@
       <dt>Name</dt>
       <dd><%= author.name %></dd>
 
-      <dt>Image</dt>
-      <dd>
-        <%= cl_image_tag @author.image, class: "img-fluid" %>
-      </dd>
-
       <dt>Book</dt>
-      <dd>
-        <% if @author.book.present? %>
-          <%= link_to author.book, author.book %>
-        <% end %>
-      </dd>
+      <dd><%= author.book_id %></dd>
 
     </dl>
 
