@@ -8,6 +8,8 @@ class AuthorResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :book
+
   # Indirect associations
 
 end

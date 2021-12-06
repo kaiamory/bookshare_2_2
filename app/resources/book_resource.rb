@@ -11,6 +11,9 @@ class BookResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :author_writers,
+             resource: AuthorResource
+
   # Indirect associations
 
 end
