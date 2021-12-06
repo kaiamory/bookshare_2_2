@@ -16,7 +16,7 @@
 
     <%= f.label :body %>
     <!-- Input for body start -->
-    <%= f.text_field :body, class: body_class, placeholder: "Enter body" %>
+    <%= f.collection_select :body, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for body end -->
     <% if body_was_invalid %>
       <% recommendation.errors.full_messages_for(:body).each do |message| %>
