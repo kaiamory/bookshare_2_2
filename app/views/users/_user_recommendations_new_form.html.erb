@@ -1,36 +1,22 @@
-<!-- Form recommendation start -->
 <%= form_with(model: @recommendation, local: true) do |f| %>
-<!-- Form recommendation end -->
 
-  <!-- Label and input for body start -->
   <div class="form-group">
     <%= f.label :body %>
 
-    <!-- Input for body start -->
     <%= f.text_field :body, class: "form-control" %>
-    <!-- Input for body end -->
   </div>
-  <!-- Label and input for body end -->
 
-  <!-- Label and input for sender_id start -->
   <div class="form-group">
     <%= f.label :sender_id %>
 
-    <!-- Input for sender_id start -->
     <%= f.text_field :sender_id, class: "form-control" %>
-    <!-- Input for sender_id end -->
   </div>
-  <!-- Label and input for sender_id end -->
 
-  <!-- Label and input for recipient_id start -->
   <div class="form-group">
     <%= f.label :recipient_id %>
 
-    <!-- Input for recipient_id start -->
     <%= f.text_field :recipient_id, class: "form-control" %>
-    <!-- Input for recipient_id end -->
   </div>
-  <!-- Label and input for recipient_id end -->
 
   <%= f.submit "Create recommendation", class: "btn btn-block btn-outline-secondary" %>
 <% end %>
