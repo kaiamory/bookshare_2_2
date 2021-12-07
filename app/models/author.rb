@@ -1,9 +1,8 @@
 class Author < ApplicationRecord
-  mount_uploader :image, ImageUploader
-
   # Direct associations
 
-  belongs_to :book
+  has_many   :books,
+             dependent: :destroy
 
   # Indirect associations
 

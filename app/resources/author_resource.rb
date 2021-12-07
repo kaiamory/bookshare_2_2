@@ -3,12 +3,12 @@ class AuthorResource < ApplicationResource
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
   attribute :name, :string
-  attribute :image, :string
   attribute :book_id, :integer
+  attribute :author_headshot, :string
 
   # Direct associations
 
-  belongs_to :book
+  has_many :books
 
   # Indirect associations
 end

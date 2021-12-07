@@ -7,18 +7,6 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :author_id, "Author" %>
-    <div class="row">
-      <div class='col-md-6 mb-1'>
-        <%= f.text_field :author_id_gteq, :class => "form-control", :placeholder => "Author greater than or equal to" %>
-      </div>
-      <div class='col-md-6'>
-        <%= f.text_field :author_id_lteq, :class => "form-control", :placeholder => "Author less than or equal to" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
     <%= f.label :user_id, "User" %>
     <div class="row">
       <div class='col-md-6 mb-1'>
@@ -87,8 +75,8 @@
 
 
   <div class="form-group">
-    <%= f.label :author_writers_name_cont, "Author writers name contains" %>
-    <%= f.text_field :author_writers_name_cont, :class => "form-control", :placeholder => "Author writers name contains" %>
+    <%= f.label :author_writer_name_cont, "Author writer name contains" %>
+    <%= f.text_field :author_writer_name_cont, :class => "form-control", :placeholder => "Author writer name contains" %>
   </div>
 
   <div class="form-group">

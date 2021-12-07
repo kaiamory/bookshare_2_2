@@ -3,10 +3,12 @@ class AuthorsController < ApplicationController
 
   def index
     @q = Author.ransack(params[:q])
-    @authors = @q.result(distinct: true).includes(:book).page(params[:page]).per(10)
+    @authors = @q.result(distinct: true).includes(:books).page(params[:page]).per(10)
   end
 
-  def show; end
+  def show
+    @book = Book.new
+  end
 
   def new
     @author = Author.new
@@ -18,12 +20,7 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
 
     if @author.save
-      message = "Author was successfully created."
-      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referer, notice: message
-      else
-        redirect_to @author, notice: message
-      end
+      redirect_to @author, notice: "Author was successfully created."
     else
       render :new
     end
@@ -39,12 +36,7 @@ class AuthorsController < ApplicationController
 
   def destroy
     @author.destroy
-    message = "Author was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referer, notice: message
-    else
-      redirect_to authors_url, notice: message
-    end
+    redirect_to authors_url, notice: "Author was successfully destroyed."
   end
 
   private
@@ -54,6 +46,6 @@ class AuthorsController < ApplicationController
   end
 
   def author_params
-    params.require(:author).permit(:name, :image, :book_id)
+    params.require(:author).permit(:name, :book_id, :author_headshot)
   end
 end

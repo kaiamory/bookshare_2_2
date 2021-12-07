@@ -3,13 +3,12 @@ class BooksController < ApplicationController
 
   def index
     @q = Book.ransack(params[:q])
-    @books = @q.result(distinct: true).includes(:author_writers, :reviews,
+    @books = @q.result(distinct: true).includes(:reviews, :author_writer,
                                                 :users).page(params[:page]).per(10)
   end
 
   def show
     @review = Review.new
-    @author = Author.new
   end
 
   def new
@@ -22,7 +21,12 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      redirect_to @book, notice: "Book was successfully created."
+      message = "Book was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
+      else
+        redirect_to @book, notice: message
+      end
     else
       render :new
     end
@@ -38,7 +42,12 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_url, notice: "Book was successfully destroyed."
+    message = "Book was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
+    else
+      redirect_to books_url, notice: message
+    end
   end
 
   private
@@ -49,6 +58,6 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:name, :author, :genre, :page_length,
-                                 :user_id, :author_id)
+                                 :user_id, :author_id, :book_cover)
   end
 end
