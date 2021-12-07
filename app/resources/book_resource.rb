@@ -8,13 +8,15 @@ class BookResource < ApplicationResource
   attribute :page_length, :string
   attribute :user_id, :integer
   attribute :author_id, :integer
+  attribute :book_cover, :string
 
   # Direct associations
 
-  has_many   :reviews
+  belongs_to :author_writer,
+             resource: AuthorResource,
+             foreign_key: :author_id
 
-  has_many   :author_writers,
-             resource: AuthorResource
+  has_many   :reviews
 
   # Indirect associations
 

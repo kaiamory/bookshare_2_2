@@ -7,6 +7,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.string :page_length
       t.integer :user_id
       t.integer :author_id
+      t.string :book_cover
 
       t.timestamps
     end

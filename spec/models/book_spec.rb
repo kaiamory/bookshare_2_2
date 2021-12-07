@@ -2,9 +2,9 @@ require "rails_helper"
 
 RSpec.describe Book, type: :model do
   describe "Direct Associations" do
-    it { should have_many(:reviews) }
+    it { should belong_to(:author_writer) }
 
-    it { should have_many(:author_writers) }
+    it { should have_many(:reviews) }
   end
 
   describe "InDirect Associations" do

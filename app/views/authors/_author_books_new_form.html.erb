@@ -1,0 +1,42 @@
+<%= form_with(model: @book, local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :author %>
+
+    <%= f.text_field :author, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :genre %>
+
+    <%= f.text_field :genre, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :page_length %>
+
+    <%= f.text_field :page_length, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_id %>
+
+    <%= f.text_field :user_id, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :author_id, value: @author.id %>
+
+  <div class="form-group">
+    <%= f.label :book_cover %>
+
+    <%= f.file_field :book_cover, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Create book", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

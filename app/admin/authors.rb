@@ -1,5 +1,5 @@
 ActiveAdmin.register Author do
-  permit_params :name, :image, :book_id
+  permit_params :name, :book_id, :author_headshot
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

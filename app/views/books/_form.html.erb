@@ -124,9 +124,31 @@
     <% end %>
 
     <%= f.label :author_id %>
-    <%= f.number_field :author_id, class: author_class, placeholder: "Enter author" %>
+    <%= f.collection_select :author_id, Author.all, :id, :to_s, {}, class: "form-control" %>
     <% if author_was_invalid %>
       <% book.errors.full_messages_for(:author).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% book_cover_class = "form-control" %>
+    <% book_cover_was_invalid = book.errors.include?(:book_cover) %>
+
+    <% if was_validated %>
+      <% if book_cover_was_invalid %>
+        <% book_cover_class << " is-invalid" %>
+      <% else %>
+        <% book_cover_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :book_cover %>
+    <%= f.file_field :book_cover, class: "form-control" %>
+    <% if book_cover_was_invalid %>
+      <% book.errors.full_messages_for(:book_cover).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>

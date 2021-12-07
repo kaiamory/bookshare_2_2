@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class BookCoverUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   # Include RMagick or MiniMagick support:

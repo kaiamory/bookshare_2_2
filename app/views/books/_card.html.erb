@@ -21,7 +21,16 @@
       <dd><%= book.user_id %></dd>
 
       <dt>Author</dt>
-      <dd><%= book.author_id %></dd>
+      <dd>
+        <% if @book.author_writer.present? %>
+          <%= link_to book.author_writer, book.author_writer %>
+        <% end %>
+      </dd>
+
+      <dt>Book cover</dt>
+      <dd>
+        <%= cl_image_tag @book.book_cover, class: "img-fluid" %>
+      </dd>
 
     </dl>
 
